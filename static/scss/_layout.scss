@@ -1,0 +1,248 @@
+.app {
+  @include setCont(100%, 100vh, flex);
+  transition: all 400ms ease;
+  // overflow: hidden;
+}
+.wrap {
+  @include setCont(100%, calc(100% - 60px), block, fixed);
+  background: #F5F5F8 !important;
+  top: $header;
+  right: 0;
+  overflow: auto;
+  transition: all 400ms ease;
+}
+header {
+  @include setCont(100%, 60px, flex, fixed, $white);
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid #F5F5F8;
+  top:0;
+  right: 0;
+  transition: all 400ms ease;
+  .left,
+  .right,
+  .center {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .btn_menu {
+    @include setCont(60px, 100%, block);
+    @include bgSvg(icoMenu("222"), no-repeat, 50% 50%, 20px auto);
+    @include blind;
+    margin-left: 5px;
+    transition: all 300ms ease;
+    &:hover {
+      opacity: 0.6;
+      // @include bgSvg(icoMenu($s_blue), no-repeat, 50% 50%, 20px auto);
+    }
+  }
+  .btn_logout {
+    margin: 0 30px 0 24px;
+    margin-left: 24px;
+    color: #999;
+    transition: all 300ms ease;
+    flex-shrink: 0;
+    &:hover{
+      color: #bbb;
+    }
+  }
+  .btn_my {
+    display: flex;
+    align-items: center;
+    color: $black;
+    transition: all 300ms ease;
+    flex-shrink: 0;
+    &:before{
+      @include setCont(13px, 13px, inline-block);
+      @include bgSvg(icoMy($s_black), no-repeat, 50% 50%, 100% auto);
+      margin-right: 3px;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+.gnb {
+  // display: none;
+  transition: all 300ms ease;
+  // transform: translateX(45px);
+  a{
+    display: inline-block;
+    color: $black;
+    margin: 0 22px;
+    flex-shrink: 0;
+    &:hover{
+      opacity: 0.6;
+    }
+    @include mobile{
+      // font-size: 10px;
+      display: none;
+    }
+  }
+}
+.area_menu {
+  @include setCont(0, 100%, block, fixed, $point);
+  top: 0;
+  left: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  transition: all 400ms ease;
+  z-index: 101;
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  } /* 스크롤 바 */
+  &::-webkit-scrollbar-track {
+    background-color: $point;
+  } /* 스크롤 바 밑의 배경 */
+  &::-webkit-scrollbar-thumb {
+    background: #898B90;
+    border-radius: 10px;
+  } /* 실질적 스크롤 바 */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #898B90;
+  } /* 실질적 스크롤 바 위에 마우스를 올려다 둘 때 */
+  &::-webkit-scrollbar-thumb:active {
+    background: #898B90;
+  } /* 실질적 스크롤 바를 클릭할 때 */
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+  .logo{
+    a{
+      @include setCont(200px, $header, block);
+      @include bgSvg(logo(), no-repeat, 50% 50%, 130px auto);
+      @include blind;
+    }
+  }
+  .list_menu {
+    width: 200px;
+    .menu {
+      @include setCont(100%, 37px, flex, relative);
+      font-weight: $bold;
+      color: $white1;
+      align-items: center;
+      padding: 0 24px 0 25px;
+      &:after {
+        @include setCont(10px, 5px, block, absolute);
+        @include bgSvg(arrDown($s_white), no-repeat, 50% 50%, 8px 5px);
+        top: 50%;
+        right: 24px;
+        transform: translateY(-50%) rotateX(180deg);
+        transition: all 400ms ease;
+      }
+      &:hover {
+        background: #1d2026;
+      }
+      &.no_dep {
+        &:after {
+          display: none;
+        }
+      }
+    }
+    .sub_menu {
+      display: block;
+      color: #898B90;
+      padding: 0 24px 0 25px;
+      transition: all 400ms ease;
+      &:hover,
+      &.on {
+        color: $white1;
+      }
+    }
+    .dep1 {
+      transition: all 400ms ease;
+      .dep2 {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 400ms ease;
+        li + li {
+          margin-top: 7px;
+        }
+      }
+      &.on {
+        background: #202429;
+        .menu {
+          &:after {
+            transform: translateY(-50%) rotateX(0);
+          }
+        }
+        .dep2 {
+          padding: 16px 0;
+          max-height: 100vh;
+          transition: all 400ms ease;
+          background: #202429;
+        }
+      }
+    }
+  }
+}
+.container {
+  width: 100%;
+  min-width: 1080px;
+  height: 100%;
+  padding: 15px 25px 25px;
+  transition: all 400ms ease;
+  @include mobile{
+    padding: 15px calcPercent(10, 320) 25px;
+  }
+  .location{
+    display: flex;
+    align-items: center;
+    padding: 0 20px 15px;
+    @include mobile{
+      padding: 0 0 15px;
+    }
+    a{
+      display: block;
+      flex-shrink: 0;
+      color: #666;
+      &+a{
+        display: flex;
+        align-items: center;
+        &:before{
+          @include setCont(10px, 5px, block);
+          @include bgSvg(arrDown("777"), no-repeat, 50% 50%, 8px 5px);
+          transform: rotate(-90deg);
+          margin: 0 7px;
+          // transform: translateY(-50%) rotateX(180deg);
+        }
+      }
+      &.on{
+        color: $black;
+        font-weight: $bold;
+      }
+    }
+  }
+  .inner{
+    @include setCont(100%, auto, block, relative);
+    min-height: calc(100% - 31px);
+    background: #fff;
+    padding: 20px;
+    .top{
+      padding-bottom: 20px;
+    }
+    &.no_padding{
+      padding: 0;
+      .top{
+        padding: 20px;
+      }
+    }
+  }
+}
+//메뉴가 열렸을때
+.on_menu{
+  .area_menu{
+    width: 200px;
+  }
+  .wrap{
+    width: calc(100% - 200px);
+    // padding-left: 200px;
+  }
+  header{
+    width: calc(100% - 200px);
+  }
+}
