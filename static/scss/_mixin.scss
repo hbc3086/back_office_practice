@@ -163,12 +163,12 @@
 //   width: $min;
 //   margin: 0 auto;
 // }
-@mixin scroll {
+@mixin scroll($size:4px) {
   overflow-x: hidden;
   overflow-y: auto;
   &::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
+    width: $size;
+    height: $size;
   } /* 스크롤 바 */
   &::-webkit-scrollbar-track {
     background-color: #d9d9d9;

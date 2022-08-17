@@ -3,7 +3,9 @@
     <h1 class="logo"><nuxt-link to="/">유니콘랜치</nuxt-link></h1>
     <nav>
       <ul class="list_menu">
-        <li><nuxt-link to="/popup" class="menu no_dep">팝업</nuxt-link></li>
+        <li><nuxt-link to="/popup" class="menu no_dep">POPUP</nuxt-link></li>
+        <li><nuxt-link to="/input" class="menu no_dep">INPUT</nuxt-link></li>
+        <li><nuxt-link to="/login" class="menu no_dep">LOGIN</nuxt-link></li>
         <li class="dep1">
           <button class="menu" @click="fnToggle">OPENIP</button>
           <ul class="dep2">
@@ -38,10 +40,28 @@
 export default {
   props: ["classNm"],
   data() {
-    return {};
+    return {
+      view:
+        this.$store.state.ui.view == undefined
+          ? "mobile"
+          : this.$store.state.ui.view,
+    };
   },
   components: {},
-  mounted() {},
+  mounted() {
+    console.log(this.view);
+    window.addEventListener(
+      "resize",
+      () => {
+        this.view = this.$store.state.ui.view;
+      },
+      true
+    );
+    $nuxt.$router.beforeEach((to, from, next) => {
+      this.fnClosePop();
+      next();
+    });
+  },
   methods: {
     fnToggle(e) {
       let target = e.target.parentNode;
@@ -53,6 +73,9 @@ export default {
       } else {
         target.classList.add("on");
       }
+    },
+    fnClosePop() {
+      this.$store.dispatch("ui/setMenuState", false);
     },
   },
 };

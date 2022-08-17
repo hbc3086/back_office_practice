@@ -1,78 +1,88 @@
-.login, .join{
-  @include setCont(100%, 100vh,flex);
+.login,
+.join {
+  @include setCont(100%, 100vh, flex);
   justify-content: center;
   align-items: center;
-  background: #F5F5F8;
-  @include mobile{
+  background: #f5f5f8;
+  @include mobile {
     background: #fff;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: auto;
   }
-  .inner{
+  .inner {
     @include setCont(100%, auto, block, relative, #fff);
     max-width: 450px;
-    overflow-y: auto;
+    max-height: 90%;
+    overflow: auto;
     padding: 40px 37px;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-    @include mobile{
+    @include mobile {
       width: 100%;
-      max-height: 100%;
+      min-width: 320px;
+      max-width: 100%;
+      height: auto;
+      max-height: unset;
       border-radius: 0;
       padding: 40px calcPercent(15);
+      overflow: hidden;
     }
   }
-  .logo{
+  .logo {
     @include setCont(130px, 15px, block);
     @include bgSvg(logo1(), no-repeat, 50% 50%, 100% auto);
     @include blind;
     margin: 0 auto 30px;
   }
-  .item{
-    label{
+  .item {
+    label {
       @include setCont(100%, null, block);
       margin-bottom: 10px;
       font-weight: $bold;
     }
-    &+.item{
+    & + .item {
       margin-top: 10px;
     }
-    .txt_gray{
+    .txt_gray {
       color: #888888 !important;
     }
   }
-  .bx_chk{
+  .bx_chk {
     margin-top: 11px;
   }
-  .btn{
+  .btn {
     margin: 20px auto 30px;
     padding: 13px 15px;
-    background:$blue;
+    background: $blue;
     color: #fff;
     border-radius: 4px;
     @include font(13);
   }
-  .bx{
+  .bx {
     text-align: center;
-    .txt_gray{
+    .txt_gray {
       color: #999 !important;
     }
-    a{
+    a {
       margin-left: 11px;
     }
   }
+  @include scroll;
 }
-.join{
-  h2{
+.join {
+  h2 {
     margin: 0 auto 30px;
     @include font(17, 20);
     text-align: center;
     margin-bottom: 30px;
   }
-  .logo{
+  .logo {
     margin: -3px 6px 0 0;
     display: inline-block;
     vertical-align: middle;
-    @include mobile{
+    @include mobile {
       display: block;
       margin: 0 auto 10px;
     }

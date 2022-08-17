@@ -1,8 +1,6 @@
 <template>
-  <div class="app" :class="{ on_menu: $store.state.ui.menuState == true }">
-    <Menu />
-    <div class="wrap">
-      <Header />
+  <div class="app no_layout">
+    <div class="wrap" :class="{ auto: $store.state.ui.menuState == true }">
       <nuxt />
     </div>
     <transition
@@ -10,9 +8,9 @@
       enter-active-class="animate__animated animate__fadeIn"
       leave-active-class="animate__animated animate__fadeOut"
     >
-      <Alert
-        v-if="$store.state.ui.popAlertData.state == true"
-        :key="$store.state.ui.popAlertData.state"
+      <CreatePop
+        v-if="$store.state.ui.popCreateState == true"
+        :key="$store.state.ui.popCreateState"
       />
     </transition>
   </div>
@@ -22,15 +20,14 @@
 import Header from "~/components/layouts/Header";
 import Menu from "~/components/layouts/Menu.vue";
 import Setting from "~/mixins/Setting";
-import Alert from "~/components/popup/Alert";
+import CreatePop from "~/components/popup/Create";
 
 export default {
-  name: "defalut",
   mixins: [Setting],
   components: {
     Header,
     Menu,
-    Alert,
+    CreatePop,
   },
 };
 </script>

@@ -1,56 +1,137 @@
 <template>
-  <div class="login">
+  <section class="container">
+    <Location
+      :list="[
+        {
+          name: 'OPENIP',
+          link: '',
+        },
+        {
+          name: '거래방식',
+          link: '',
+        },
+      ]"
+    />
     <div class="inner">
-      <h1 class="logo">유니콘랜치</h1>
-      <div class="form ">
-        <div class="item">
-          <label for="id">아이디</label>
-          <Input :data="{type:'text', id:'id', placeholder:'이메일형식의 아이디를 입력해 주세요.',}"/>
-        </div>
-        <div class="item">
-          <div class="colb">
-            <div class="left">
-              <label for="pw">비밀번호</label>
-            </div>
-            <div class="right">
-              <nuxt-link to="" class="txt_gray">비밀번호를 잊으셨나요?</nuxt-link>
-            </div>
-          </div>
-          <Input :data="{type:'password', id:'pw', placeholder:'비밀번호를 입력해 주세요.',}"/>
-        </div>
-        <CheckBox
-          :data="{
-            title:'<b>아이디기억하기</b>',
-            id: '1',
-          }"
-          ref="agrTm01"
-          @onChange="checked => fnFormChange({ name: 'agrTm01', value: checked })"
-        />
-        <!-- <input type="text" v-model="email" label="E-mail" />
-        <input type="text" v-model="password" label="password" />
-        <button @click="fnLogin">로그인</button> -->
-        <div class="btns">
-          <button class="btn full">로그인</button>
-        </div>
-        <div class="bx">
-          <span class="txt_gray">백오피스 회원이 아니신가요?</span> <nuxt-link to="/signUp1" class="txt_sky">회원가입</nuxt-link>
-        </div>
+      <div class="top">
+        <button class="btn">상품 등록</button>
+        <button class="btn">열기</button>
+        <button class="btn dark">삭제</button>
       </div>
-    </div> 
-  </div>
+      <div class="contents">
+        <no-ssr>
+          <grid :data="gridProps.data" :columns="gridProps.columns" />
+        </no-ssr>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 import Header from "~/components/layouts/Header";
 import Location from "~/components/layouts/Location";
-import CheckBox from "~/components/common/CheckBox";
-import Input from "~/components/common/Input";
 
 export default {
+  data() {
+    return {};
+  },
+  created() {
+    this.gridProps = {
+      data: [
+        // for rowData prop
+        {
+          c1: "1992/03/25",
+          c2: "12/06/2019",
+          c3: "2014-04-16",
+          c4: "2019-11-19 09:00 AM",
+          c5: "2019-11-19 09:00 AM",
+          c6: "2019-01",
+          c7: "2019",
+        },
+      ],
+      columns: [
+        {
+          header: "DatePicker (Default)",
+          name: "c1",
+          editor: "datePicker",
+        },
+        {
+          header: "DatePicker (Using options)",
+          name: "c2",
+          editor: {
+            type: "datePicker",
+            options: {
+              format: "dd/MM/yyyy",
+            },
+          },
+        },
+        {
+          header: "DatePicker (selectableRanges)",
+          name: "c3",
+          editor: {
+            type: "datePicker",
+            options: {
+              selectableRanges: [
+                [new Date(2014, 3, 10), new Date(2014, 5, 20)],
+              ],
+            },
+          },
+        },
+        {
+          header: "Date-TimePicker",
+          name: "c4",
+          editor: {
+            type: "datePicker",
+            options: {
+              format: "yyyy-MM-dd HH:mm A",
+              timepicker: true,
+            },
+          },
+        },
+        {
+          header: "Date-TimePicker With tab",
+          name: "c5",
+          editor: {
+            type: "datePicker",
+            options: {
+              format: "yyyy-MM-dd HH:mm A",
+              timepicker: {
+                layoutType: "tab",
+                inputType: "spinbox",
+              },
+            },
+          },
+        },
+        {
+          header: "MonthPicker",
+          name: "c6",
+          editor: {
+            type: "datePicker",
+            options: {
+              format: "yyyy-MM",
+              type: "month",
+            },
+          },
+        },
+        {
+          header: "YearPicker",
+          name: "c7",
+          editor: {
+            type: "datePicker",
+            options: {
+              format: "yyyy",
+              type: "year",
+            },
+          },
+        },
+      ],
+    };
+  },
   components: {
     Header,
     Location,
-    CheckBox,
-    Input
+    // Grid
   },
+  methods: {},
 };
+</script>

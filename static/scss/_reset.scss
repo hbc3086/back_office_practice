@@ -1,22 +1,74 @@
 @include setFont("Pretendard", "/pretendard/PretendardRegular", 400);
 @include setFont("Pretendard", "/pretendard/PretendardBold", 500);
-@include setFont("Pretendard", "/pretendard/PretendardExtraBold",800);
+@include setFont("Pretendard", "/pretendard/PretendardExtraBold", 800);
 @include setFont("Montserrat", "/montserrat/MontserratRegular", 400);
 @include setFont("Montserrat", "/montserrat/MontserratSemiBold", 500);
 @include setFont("Montserrat", "/montserrat/MontserratBold", 600);
 
-html, body {
+html,
+body {
   border: none;
   @include fontfamily(400);
   font-size: $pc_font;
   line-height: 16px;
   color: $black;
 }
-html,body,div,ul,li,dl,dt,dd,ol,p,h1,h2,h3,h4,h5,h6,form,fieldset {
+html,
+body,
+div,
+ul,
+li,
+dl,
+dt,
+dd,
+ol,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset {
   margin: 0;
   padding: 0;
 }
-div,ul,li,a,b,h1,h2,h3,h4,h5,h6,dt,dl,dd,strong,span,p,b,th,td,article,label,button,aside,details,figcaption,figure,footer,header,menu,nav,section,main,input,textarea {
+div,
+ul,
+li,
+a,
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dt,
+dl,
+dd,
+strong,
+span,
+p,
+b,
+th,
+td,
+article,
+label,
+button,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+main,
+input,
+textarea {
   box-sizing: border-box;
 }
 * {
@@ -25,7 +77,6 @@ div,ul,li,a,b,h1,h2,h3,h4,h5,h6,dt,dl,dd,strong,span,p,b,th,td,article,label,but
 html {
   width: 100%;
   height: 100%;
-  min-width: $mobile;
   -webkit-text-size-adjust: none;
 }
 
@@ -39,15 +90,36 @@ body {
   min-height: 100%;
 }
 
-h1,h2,h3,h4,h5,h6,strong,b,th {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b,
+th {
   font-weight: $bold;
 }
 
-article,aside,details,figcaption,figure,footer,header,menu,nav,section,main {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+main {
   display: block;
 }
 
-ul,ol,dl,li {
+ul,
+ol,
+dl,
+li {
   list-style: none;
 }
 
@@ -57,7 +129,8 @@ pre {
   white-space: pre-wrap;
 }
 
-em,address {
+em,
+address {
   font-style: normal;
 }
 
@@ -98,7 +171,16 @@ iframe {
   border: none;
   outline: none;
 }
-input[type="text"],input[type="password"],input[type="tel"],input[type="email"],input[type="button"],input[type="submit"],input[type="reset"],button, select,textarea {
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+select,
+textarea {
   @include fontfamily(400);
   font-size: $pc_font;
   box-sizing: border-box;
@@ -107,13 +189,16 @@ input[type="text"],input[type="password"],input[type="tel"],input[type="email"],
     color: #969696;
   }
 }
-input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,input:-webkit-autofill:active {
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-transition: background-color 9999s ease-out;
-  -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset !important;
   -webkit-text-fill-color: $black !important;
 }
-button{
+button {
   font-size: $pc_font;
   // line-height: 1;
   padding: 0;
@@ -124,7 +209,12 @@ textarea {
   padding: 0;
 }
 
-a,a:link,a:visited,a:hover,a:active,a:focus {
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
   color: $black;
   text-decoration: none;
   outline: none;
@@ -150,7 +240,7 @@ a.dis {
   height: 8px;
 } /* 스크롤 바 */
 ::-webkit-scrollbar-track {
-  background-color: #eaeaea;
+  background-color: #dfdfdf;
 } /* 스크롤 바 밑의 배경 */
 ::-webkit-scrollbar-thumb {
   background: #bfbfbf;
@@ -164,13 +254,6 @@ a.dis {
 } /* 실질적 스크롤 바를 클릭할 때 */
 ::-webkit-scrollbar-button {
   display: none;
-} /* 스크롤 바 상 하단 버튼 */
-div::-webkit-scrollbar-track,
-div::-webkit-scrollbar-button-track {
-  background: rgba(255, 255, 255, 0);
-} /* 스크롤 바 밑의 배경 */
-div::-webkit-scrollbar-corner {
-  background: rgba(255, 255, 255, 0);
 }
 
 /* margin */

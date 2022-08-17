@@ -1,5 +1,6 @@
 const DEFAULT_STATE = {
   menuState: false,
+  popCreateState:false,
   popAlertData: {
     state:false,
     type: null,
@@ -29,6 +30,9 @@ export default {
     },
     setPopAlertData({ commit }, payload) {
       commit('UPDATE_STATE', { popAlertData: payload });
+    },
+    setPopCreateState({ commit }, payload) {
+      commit('UPDATE_STATE', { popCreateState: payload });
     },
   },
 };
